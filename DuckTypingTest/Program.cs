@@ -1,35 +1,52 @@
-﻿using static System.Console;
+﻿using System;
 
-class Duck
+namespace DuckTypingTest
 {
-    public void Quack() => WriteLine("Quaaaaaack!");
-    public void Feathers() => WriteLine("The duck has white and gray feathers.");
-}
-
-class Person
-{
-    public void Quack() => WriteLine("The person imitates a duck.");
-    public void Feathers() => WriteLine("The person takes a feather from the ground and shows it.");
-}
-
-class Program
-{
-    static void InTheForest(dynamic obj)
+    internal class Duck
     {
-        obj.Quack();
-        obj.Feathers();
+        public void Quack()
+        {
+            Console.WriteLine("Quaaaaaack!");
+        }
+
+        public void Feathers()
+        {
+            Console.WriteLine("The duck has white and gray feathers.");
+        }
     }
 
-    static void Game()
+    internal class Person
     {
-        Duck donald = new Duck();
-        Person john = new Person();
-        InTheForest(donald);
-        InTheForest(john);
+        public void Quack()
+        {
+            Console.WriteLine("The person imitates a duck.");
+        }
+
+        public void Feathers()
+        {
+            Console.WriteLine("The person takes a feather from the ground and shows it.");
+        }
     }
 
-    static void Main()
+    internal static class Program
     {
-        Game();
+        private static void InTheForest(dynamic obj)
+        {
+            obj.Quack();
+            obj.Feathers();
+        }
+
+        private static void Game()
+        {
+            var donald = new Duck();
+            var john = new Person();
+            InTheForest(donald);
+            InTheForest(john);
+        }
+
+        private static void Main()
+        {
+            Game();
+        }
     }
 }
